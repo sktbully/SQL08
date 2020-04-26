@@ -1,0 +1,874 @@
+﻿信息系统与数据库技术练习8答题卡
+
+班级：信息管理1班     
+姓名：邱梓龙     
+学号：20190307128     
+
+注：请将答案放置在序号下方。*/
+
+（一）
+1.
+USE master
+GO
+IF EXISTS(SELECT 1 FROM master..sysdatabases 
+WHERE name='EDUC')
+DROP DATABASE EDUC
+GO
+IF EXISTS(SELECT 1 FROM master..sysdatabases 
+WHERE name='PROJECT')
+DROP DATABASE PROJECT
+GO
+CREATE DATABASE EDUC
+GO
+USE EDUC
+GO
+CREATE TABLE Users
+(
+  UserName VARCHAR(30) PRIMARY KEY,
+  Pass  VARCHAR(MAX),  
+  Email VARCHAR(MAX),
+  Phone VARCHAR(11),
+  En VARCHAR(MAX)
+)
+GO
+INSERT Users
+VALUES('Admin','abc.123','abc@163.com','13456123456',''),
+('Zhang','def.456','def@163.com','13456246802','')
+GO
+CREATE TABLE Department
+(Did CHAR(4) PRIMARY KEY,
+ Dname VARCHAR(20),
+ Dean VARCHAR(20))
+GO
+INSERT INTO Department
+VALUES('D001','计算机','陈园')
+GO
+INSERT INTO Department
+VALUES('D002','经济管理','黄薇娜')
+GO
+INSERT INTO Department
+VALUES('D003','机械','李杰')
+GO
+CREATE TABLE Student
+(Sid CHAR(6) PRIMARY KEY,
+ Sname VARCHAR(20),
+ Sex CHAR(2),
+ Birth DATETIME,
+ DID CHAR(4) REFERENCES Department)
+GO
+INSERT INTO Student
+VALUES('100101','王玲玲','女','1994-2-3','D001')
+GO
+INSERT INTO Student
+VALUES('100201','张燕红','女','1993-10-03','D002')
+GO
+INSERT INTO Student
+VALUES('100102','王红庆','男','1993-7-2','D001')
+GO
+INSERT INTO Student
+VALUES('100103','杨勇','男','1994-7-16','D001')
+GO
+INSERT INTO Student
+VALUES('100202','傅亮达','男','1992-12-31','D002')
+GO
+INSERT INTO Student
+VALUES('100301','周凯锋','男','1994-8-7','D003')
+GO
+INSERT INTO Student
+VALUES('100302','郑燕欣','女','1993-6-19','D003')
+GO
+INSERT INTO Student
+ VALUES('102801','王韶虹','女','1995-2-2','D001')
+INSERT INTO Student
+ VALUES('102802','范托雯','男','1995-12-3','D001')
+INSERT INTO Student
+ VALUES('102803','李茂清','男','1995-8-4','D001')
+INSERT INTO Student
+ VALUES('102804','周宇','男','1995-2-5','D001')
+INSERT INTO Student
+ VALUES('102806','陈金桥','男','1995-2-6','D001')
+INSERT INTO Student
+ VALUES('102809','梁志伟','男','1995-4-7','D001')
+INSERT INTO Student
+ VALUES('102810','孔山林','男','1995-5-8','D001')
+INSERT INTO Student
+ VALUES('102811','陈北观','男','1995-6-9','D001')
+INSERT INTO Student
+ VALUES('102812','吴良芳','女','1995-7-10','D001')
+INSERT INTO Student
+ VALUES('102813','伍建华','男','1995-9-11','D001')
+INSERT INTO Student
+ VALUES('102814','龙建勇','男','1995-10-12','D001')
+INSERT INTO Student
+ VALUES('102815','张建华','男','1995-11-13','D001')
+INSERT INTO Student
+ VALUES('102816','陈福红','男','1995-1-14','D001')
+INSERT INTO Student
+ VALUES('102817','叶景君','男','1995-2-15','D001')
+INSERT INTO Student
+ VALUES('102818','雷志辉','男','1995-4-16','D001')
+INSERT INTO Student
+ VALUES('102819','李见明','男','1995-2-17','D001')
+INSERT INTO Student
+ VALUES('102820','邱业安','男','1995-12-18','D001')
+INSERT INTO Student
+ VALUES('102821','陈常广','男','1995-11-19','D001')
+INSERT INTO Student
+ VALUES('102822','马华','男','1995-10-20','D001')
+INSERT INTO Student
+ VALUES('102823','袁国孝','男','1995-7-21','D001')
+INSERT INTO Student
+ VALUES('102824','肖波','男','1995-8-22','D001')
+INSERT INTO Student
+ VALUES('102825','何永聪','男','1995-9-23','D001')
+INSERT INTO Student
+ VALUES('102826','童粤辉','男','1995-10-24','D001')
+INSERT INTO Student
+ VALUES('102827','黄颜开','女','1995-4-25','D001')
+INSERT INTO Student
+ VALUES('102828','姜湘','女','1995-5-26','D001')
+INSERT INTO Student
+ VALUES('102829','刘运伟','男','1995-6-27','D001')
+INSERT INTO Student
+ VALUES('102830','罗荣华','男','1995-2-28','D001')
+INSERT INTO Student
+ VALUES('102831','梁世富','男','1995-3-1','D001')
+INSERT INTO Student
+ VALUES('102832','黎永锋','男','1995-8-2','D001')
+INSERT INTO Student
+ VALUES('101801','邹志明','男','1995-11-3','D001')
+INSERT INTO Student
+ VALUES('101802','刘小宝','男','1995-3-4','D001')
+INSERT INTO Student
+ VALUES('101803','沈文峰','男','1995-3-5','D001')
+INSERT INTO Student
+ VALUES('101804','李威','男','1995-9-6','D001')
+INSERT INTO Student
+ VALUES('101805','谢国和','男','1995-7-7','D001')
+INSERT INTO Student
+ VALUES('101806','王兵','男','1995-3-8','D001')
+INSERT INTO Student
+ VALUES('101807','刘进强','男','1995-3-9','D001')
+INSERT INTO Student
+ VALUES('101808','陈小波','男','1995-6-10','D001')
+INSERT INTO Student
+ VALUES('101810','邱雄龙','男','1995-3-11','D001')
+INSERT INTO Student
+ VALUES('101811','王琨','男','1995-5-12','D001')
+INSERT INTO Student
+ VALUES('101812','马俊','男','1995-3-13','D001')
+INSERT INTO Student
+ VALUES('101813','谢雨','男','1995-12-14','D001')
+INSERT INTO Student
+ VALUES('101814','周海辉','男','1995-11-15','D001')
+INSERT INTO Student
+ VALUES('101815','张容芳','女','1995-3-16','D001')
+INSERT INTO Student
+ VALUES('101816','庄国超','男','1995-9-17','D001')
+INSERT INTO Student
+ VALUES('101101','唐海贤','男','1995-3-18','D001')
+INSERT INTO Student
+ VALUES('101102','杨志杰','男','1995-8-19','D001')
+INSERT INTO Student
+ VALUES('101103','韦汉郁','男','1995-6-20','D001')
+INSERT INTO Student
+ VALUES('101104','林小东','男','1995-5-21','D001')
+INSERT INTO Student
+ VALUES('101105','李荣幸','男','1995-4-22','D001')
+INSERT INTO Student
+ VALUES('101106','黎景','男','1995-3-23','D001')
+INSERT INTO Student
+ VALUES('101107','黄中敏','男','1995-10-24','D001')
+INSERT INTO Student
+ VALUES('101108','罗麟辉','男','1995-3-25','D001')
+INSERT INTO Student
+ VALUES('101109','刘锡泉','男','1995-12-26','D001')
+INSERT INTO Student
+ VALUES('101110','何飞舍','男','1995-11-27','D001')
+INSERT INTO Student
+ VALUES('101111','郑冠胜','男','1995-3-28','D001')
+INSERT INTO Student
+ VALUES('101112','廖益淦','男','1995-4-29','D002')
+INSERT INTO Student
+ VALUES('101113','杨淑娟','女','1995-3-30','D002')
+INSERT INTO Student
+ VALUES('101114','冯慧妍','女','1995-3-31','D002')
+INSERT INTO Student
+ VALUES('101115','李妙枝','女','1996-4-1','D002')
+INSERT INTO Student
+ VALUES('101116','张旭','男','1996-4-2','D002')
+INSERT INTO Student
+ VALUES('101117','朱东铭','男','1996-1-3','D002')
+INSERT INTO Student
+ VALUES('101118','叶文杰','男','1996-9-4','D002')
+INSERT INTO Student
+ VALUES('101119','陈炳新','男','1996-4-5','D002')
+INSERT INTO Student
+ VALUES('101120','温必北','男','1996-10-6','D002')
+INSERT INTO Student
+ VALUES('101121','周伟表','男','1996-4-7','D002')
+INSERT INTO Student
+ VALUES('101122','刘宇杰','男','1996-12-8','D002')
+INSERT INTO Student
+ VALUES('101123','张伟基','男','1996-11-9','D002')
+INSERT INTO Student
+ VALUES('101124','龙荣','男','1996-7-10','D002')
+INSERT INTO Student
+ VALUES('101125','袁俊杰','男','1996-9-11','D002')
+INSERT INTO Student
+ VALUES('101126','蔡明','男','1996-1-12','D002')
+INSERT INTO Student
+ VALUES('101127','黎建文','男','1996-8-13','D002')
+INSERT INTO Student
+ VALUES('101128','赖伟坚','男','1996-10-14','D002')
+INSERT INTO Student
+ VALUES('101129','杨敬道','男','1996-4-15','D002')
+INSERT INTO Student
+ VALUES('101130','黄冠华','男','1996-12-16','D002')
+INSERT INTO Student
+ VALUES('101131','杨晓文','男','1996-7-17','D002')
+INSERT INTO Student
+ VALUES('101132','朱继勤','男','1996-4-18','D002')
+INSERT INTO Student
+ VALUES('101133','吴云贵','男','1996-8-19','D002')
+INSERT INTO Student
+ VALUES('101134','赖政明','男','1996-1-20','D002')
+INSERT INTO Student
+ VALUES('101135','黄楚东','男','1996-2-21','D002')
+INSERT INTO Student
+ VALUES('101136','翁修维','男','1996-4-22','D002')
+INSERT INTO Student
+ VALUES('101137','饶文芳','男','1996-3-23','D002')
+INSERT INTO Student
+ VALUES('101138','李锐','男','1996-4-24','D002')
+INSERT INTO Student
+ VALUES('101139','梁光钊','男','1996-4-25','D002')
+INSERT INTO Student
+ VALUES('101141','林中杰','男','1996-7-26','D002')
+INSERT INTO Student
+ VALUES('101201','梁东启','男','1996-9-27','D002')
+INSERT INTO Student
+ VALUES('101202','黄炳新','男','1996-4-28','D002')
+INSERT INTO Student
+ VALUES('101203','龙拔新','男','1996-4-29','D002')
+INSERT INTO Student
+ VALUES('101204','何学通','男','1996-10-30','D002')
+INSERT INTO Student
+ VALUES('101205','温志东','男','1996-5-1','D002')
+INSERT INTO Student
+ VALUES('101206','方文慧','男','1996-5-2','D002')
+INSERT INTO Student
+ VALUES('101207','黄友闯','男','1996-11-3','D002')
+INSERT INTO Student
+ VALUES('101208','叶敬文','男','1996-5-4','D002')
+INSERT INTO Student
+ VALUES('101209','蒋冠平','男','1996-12-5','D002')
+INSERT INTO Student
+ VALUES('101210','蔡国清','男','1996-5-6','D002')
+INSERT INTO Student
+ VALUES('101211','詹欣润','男','1996-7-7','D002')
+INSERT INTO Student
+ VALUES('101212','陆国富','男','1996-8-8','D002')
+INSERT INTO Student
+ VALUES('101213','陈佳健','男','1996-5-9','D002')
+INSERT INTO Student
+ VALUES('101214','赵嘉俊','男','1996-9-10','D002')
+INSERT INTO Student
+ VALUES('101215','骆顺发','男','1996-10-11','D002')
+INSERT INTO Student
+ VALUES('101216','郑帆','男','1996-12-12','D002')
+INSERT INTO Student
+ VALUES('101217','黄佩青','男','1996-7-13','D002')
+INSERT INTO Student
+ VALUES('101218','徐咏源','男','1996-5-14','D002')
+INSERT INTO Student
+ VALUES('101219','陈晓钢','男','1996-1-15','D002')
+INSERT INTO Student
+ VALUES('101220','王泽聘','男','1996-8-16','D002')
+INSERT INTO Student
+ VALUES('101221','陈泽强','男','1996-2-17','D002')
+INSERT INTO Student
+ VALUES('101222','陈轩杰','男','1996-3-18','D002')
+INSERT INTO Student
+ VALUES('101223','黄雄辉','男','1996-1-19','D002')
+INSERT INTO Student
+ VALUES('101224','梁文金','男','1996-5-20','D002')
+INSERT INTO Student
+ VALUES('101225','林子棠','男','1996-9-21','D002')
+INSERT INTO Student
+ VALUES('101226','陈奕鹏','男','1996-10-22','D002')
+INSERT INTO Student
+ VALUES('101227','刘锦波','男','1996-5-23','D002')
+INSERT INTO Student
+ VALUES('101228','廖业泓','男','1996-7-24','D002')
+INSERT INTO Student
+ VALUES('101229','欧阳效勇','男','1996-1-25','D002')
+INSERT INTO Student
+ VALUES('101230','刘嘉龙','男','1996-2-26','D002')
+INSERT INTO Student
+ VALUES('101231','吴锐林','男','1996-3-27','D002')
+INSERT INTO Student
+ VALUES('101232','陈勇达','男','1996-5-28','D002')
+INSERT INTO Student
+ VALUES('101233','张衡','男','1996-5-29','D002')
+INSERT INTO Student
+ VALUES('101234','张冠静','男','1996-7-30','D002')
+INSERT INTO Student
+ VALUES('101235','梁超华','男','1996-5-31','D002')
+INSERT INTO Student
+ VALUES('101236','杜淦滔','男','1993-6-1','D002')
+INSERT INTO Student
+ VALUES('101237','朱建峰','男','1993-6-2','D002')
+INSERT INTO Student
+ VALUES('101238','蔡绮媚','女','1993-6-3','D002')
+INSERT INTO Student
+ VALUES('101239','梁嘉敏','女','1993-1-4','D003')
+INSERT INTO Student
+ VALUES('101240','陆敏莹','女','1993-2-5','D003')
+INSERT INTO Student
+ VALUES('101301','陈锐锋','男','1993-3-6','D003')
+INSERT INTO Student
+ VALUES('101302','廖宇龙','男','1993-6-7','D003')
+INSERT INTO Student
+ VALUES('101303','钟汉祥','男','1993-10-8','D003')
+INSERT INTO Student
+ VALUES('101304','李中华','男','1993-11-9','D003')
+INSERT INTO Student
+ VALUES('101305','莫镜才','男','1993-6-10','D003')
+INSERT INTO Student
+ VALUES('101306','曾德兴','男','1993-6-11','D003')
+INSERT INTO Student
+ VALUES('101307','孔令宽','男','1993-6-12','D003')
+INSERT INTO Student
+ VALUES('101308','吴振太','男','1993-6-13','D003')
+INSERT INTO Student
+ VALUES('101309','陈亮','男','1993-6-14','D003')
+INSERT INTO Student
+ VALUES('101310','卓巧婷','女','1993-6-15','D003')
+INSERT INTO Student
+ VALUES('101311','林龙英','女','1993-6-16','D003')
+INSERT INTO Student
+ VALUES('101312','黄素萍','女','1993-6-17','D003')
+INSERT INTO Student
+ VALUES('101313','何思瑶','女','1993-1-18','D003')
+INSERT INTO Student
+ VALUES('101314','李武强','男','1993-2-19','D003')
+INSERT INTO Student
+ VALUES('101315','陈星光','男','1993-3-20','D003')
+INSERT INTO Student
+ VALUES('101316','周远标','男','1993-6-21','D003')
+INSERT INTO Student
+ VALUES('101317','张房坤','男','1993-10-22','D003')
+INSERT INTO Student
+ VALUES('101318','刘文龙','男','1993-11-23','D003')
+INSERT INTO Student
+ VALUES('101319','叶淮恩','男','1993-12-24','D003')
+INSERT INTO Student
+ VALUES('101320','谢仁泉','男','1993-6-25','D003')
+INSERT INTO Student
+ VALUES('101321','钟伟宗','男','1993-6-26','D003')
+INSERT INTO Student
+ VALUES('101322','区金成','男','1993-10-27','D003')
+INSERT INTO Student
+ VALUES('101323','张宇辉','男','1993-11-28','D003')
+INSERT INTO Student
+ VALUES('101324','林冰','男','1993-12-29','D003')
+INSERT INTO Student
+ VALUES('101325','陈东翔','男','1993-6-30','D003')
+INSERT INTO Student
+ VALUES('101326','徐铭海','男','1993-7-1','D003')
+INSERT INTO Student
+ VALUES('101327','李岳鹏','男','1993-1-2','D003')
+INSERT INTO Student
+ VALUES('101328','陈少青','男','1993-2-3','D003')
+INSERT INTO Student
+ VALUES('101329','骆志锋','男','1993-3-4','D003')
+INSERT INTO Student
+ VALUES('101330','林泽龙','男','1993-7-5','D003')
+INSERT INTO Student
+ VALUES('101331','黄辉南','男','1993-7-6','D003')
+INSERT INTO Student
+ VALUES('101332','黎晓东','男','1993-1-7','D003')
+INSERT INTO Student
+ VALUES('101333','林洲','男','1993-2-8','D003')
+INSERT INTO Student
+ VALUES('101334','徐旭林','男','1993-3-9','D003')
+INSERT INTO Student
+ VALUES('101335','张晓森','男','1993-7-10','D003')
+INSERT INTO Student
+ VALUES('101336','卓奕鹏','男','1993-7-11','D003')
+INSERT INTO Student
+ VALUES('101337','施高喜','男','1993-10-12','D003')
+INSERT INTO Student
+ VALUES('101338','詹哲','男','1993-11-13','D003')
+INSERT INTO Student
+ VALUES('101339','张炎亮','男','1993-12-14','D003')
+INSERT INTO Student
+ VALUES('101340','邓坤建','男','1993-7-15','D003')
+INSERT INTO Student
+ VALUES('101341','梁喜明','男','1993-1-16','D003')
+INSERT INTO Student
+ VALUES('101342','吴伟富','男','1993-2-17','D003')
+INSERT INTO Student
+ VALUES('101401','李栩峰','男','1993-7-18','D003')
+INSERT INTO Student
+ VALUES('101402','黎家亮','男','1993-7-19','D003')
+INSERT INTO Student
+ VALUES('101403','黄晓红','男','1993-10-20','D003')
+INSERT INTO Student
+ VALUES('101404','谭耀辉','男','1993-12-21','D003')
+INSERT INTO Student
+ VALUES('101405','罗基勤','男','1993-11-22','D003')
+INSERT INTO Student
+ VALUES('101406','张喜健','男','1993-7-23','D003')
+INSERT INTO Student
+ VALUES('101407','黄鸿杰','男','1993-7-24','D003')
+INSERT INTO Student
+ VALUES('101408','叶志波','男','1993-7-25','D003')
+INSERT INTO Student
+ VALUES('101409','黄毓江','男','1993-7-26','D003')
+INSERT INTO Student
+ VALUES('101410','徐显贝','男','1993-7-27','D003')
+INSERT INTO Student
+ VALUES('101411','谢旭思','男','1993-1-28','D003')
+INSERT INTO Student
+ VALUES('101412','朱创发','男','1993-2-28','D003')
+INSERT INTO Student
+ VALUES('101413','毕志锋','男','1993-3-30','D003')
+INSERT INTO Student
+ VALUES('101414','李健东','男','1993-7-31','D003')
+INSERT INTO Student
+ VALUES('101415','陈腾攀','男','1993-8-1','D003')
+INSERT INTO Student
+ VALUES('101416','杨宝林','男','1993-8-2','D003')
+INSERT INTO Student
+ VALUES('101417','曾秋荣','男','1993-8-3','D003')
+INSERT INTO Student
+ VALUES('101418','黄癸合','男','1993-8-4','D003')
+INSERT INTO Student
+ VALUES('101419','郑坚纳','男','1993-8-5','D003')
+INSERT INTO Student
+ VALUES('101420','莫锡豪','男','1993-8-6','D003')
+INSERT INTO Student
+ VALUES('101421','梁仕标','男','1993-8-7','D003')
+INSERT INTO Student
+ VALUES('101422','廖子开','男','1993-8-8','D003')
+INSERT INTO Student
+ VALUES('101423','欧国彬','男','1993-10-9','D003')
+INSERT INTO Student
+ VALUES('101424','邓龙昌','男','1993-11-10','D003')
+INSERT INTO Student
+ VALUES('101425','李永森','男','1993-12-11','D003')
+INSERT INTO Student
+ VALUES('101426','黄宏鸿','男','1993-3-12','D003')
+GO
+CREATE TABLE Boards
+(BoardID INT IDENTITY(1,1) PRIMARY KEY,
+ BoardName VARCHAR(30),
+ ModeratorSid CHAR(6) FOREIGN KEY REFERENCES Student(Sid),
+ SubJect VARCHAR(30),
+ PostCnt INT default 0)
+GO
+INSERT INTO Boards
+VALUES
+('ASP.NET','100101','讨论ASP.NET编程技巧',2),
+('PHP','100201','讨论PHP编程技巧',0),
+('JSP','100301','讨论JSP编程技巧',0)
+GO
+CREATE TABLE Posts
+(Postid  INT IDENTITY(1,1) PRIMARY KEY,
+ BoardID INT REFERENCES BOARDS,
+ Sid CHAR(6) FOREIGN KEY REFERENCES Student(Sid),
+ ReplyCnt INT default 0,
+ Title VARCHAR(255),
+ Content TEXT,
+ PostTime DATETIME, 
+ LastReplySid char(6) FOREIGN KEY REFERENCES Student(Sid),
+ Lastreplytime DATETIME,
+ State INT default 0)
+GO
+INSERT INTO Posts
+VALUES
+(1,'100102',3,'ASP.NET高手为童鞋们解答asp.net设计问题','为大家指导asp.net设计问题啦，有问题的童鞋欢迎拍砖，您将得到满意的回答。我是有丰富经验的asp.net开发人员',
+'2013-2-2','100301','2013-3-5',1),
+(1,'100103',1,'有深圳的 .NET 兼职程序员么','有深圳的 .NET 兼职程序员么 打算开发个网站平台 PM我',
+'2013-2-3','101204','2013-3-10',0)
+GO
+CREATE TABLE Replys
+(Replyid INT IDENTITY(1,1) PRIMARY KEY,
+ Postid INT, 
+ Sid CHAR(6) FOREIGN KEY REFERENCES Student(Sid),
+ ReplyText TEXT,
+ replytime DATETIME)
+GO
+INSERT INTO Replys
+VALUES
+(1,'100202','datagrid控件，为什么E.Item.Cells[1].Controls[0].后面找不到Text，说缺少引用指令集，该怎样解决？代码比着书打上去的，为什么不对呐，谢谢','2013-3-3'),
+(1,'100102','命名空间，看看有没有引用进来','2013-3-4'),
+(1,'100301','WindowsForm和网站的socket连接的后台程序有哪些不同啊？ 是这样 别人给了我一个他连接好的socket的这是他的界面，但是我得用在网页上，有哪些地方需要修改呢',
+'2013-3-5'),
+(2,'101204','不知道自己技术行不行','2013-3-10')
+GO
+CREATE TABLE Course
+(Cid CHAR(6) PRIMARY KEY,
+ Cname VarChar(20),
+ CAttrib INT )
+GO
+INSERT INTO Course
+VALUES('A00101','高等数学',0)
+GO
+INSERT INTO Course
+VALUES('A00201','数据结构',2)
+GO
+INSERT INTO Course
+VALUES('A00401','C语言',1)
+GO
+INSERT INTO Course
+VALUES('B00101','计算机导论',1)
+GO
+INSERT INTO Course
+VALUES('B00102','大学语文',0)
+GO
+INSERT INTO Course
+VALUES('A_0101','大学英语',0)
+GO
+INSERT INTO Course
+VALUES('A_0102','PHP程序设计',2)
+GO
+INSERT INTO Course
+VALUES('A_0103','ADO.NET程序设计',2)
+GO
+CREATE TABLE SC
+(SCid INT IDENTITY PRIMARY KEY,
+ Cid CHAR(6) REFERENCES Course,
+ Sid CHAR(6) REFERENCES Student,
+ SCscore int,UNIQUE(Cid,Sid)
+ )
+GO
+INSERT INTO SC(Cid,Sid)
+SELECT Cid,Sid
+FROM Course CROSS JOIN Student
+GO
+UPDATE SC
+SET SCscore=CEILING(30+RAND(SCid*10000)* 70)
+GO
+UPDATE SC
+SET SCscore+=5
+WHERE Cid='B00102'
+GO
+UPDATE SC
+SET SCscore+=2
+WHERE Cid='A_0103'
+GO
+UPDATE SC
+SET SCscore-=3
+WHERE Cid='A_0102'
+GO
+UPDATE SC
+SET SCscore-=2
+WHERE Cid='A_0101'
+GO
+UPDATE SC
+SET SCscore-=5
+WHERE Cid='A00201'
+GO
+UPDATE SC
+SET SCscore-=7
+WHERE Cid='A00401'
+GO
+UPDATE SC
+SET SCscore=100
+WHERE SCscore>100
+GO
+UPDATE SC
+SET SCscore=91
+WHERE Sid IN ('101335','101816','101810','102814','102830','101425','101340','101408') AND SCscore<60
+GO
+CREATE TABLE Books
+(Bid CHAR(4) PRIMARY KEY,
+ Bname VARCHAR(50),
+ Content Text,
+ Author VARCHAR(50),
+ Price Money,
+ ISBN CHAR(13),
+ Publisher VARCHAR(50),
+ PublisherDate DateTime,
+ Discount DECIMAL(3,2)
+ )
+GO
+INSERT Books
+VALUES('B001','大学英语','本书由两部分构成：第一部分为专项练习，第二部分为仿真自测。第一部分介绍了各类题型的应试技巧，并提供了相应的专项练习，学生可以根据自身的学习需要，分项进行强化练习，固本培元。第二部分提供了20套完整的仿真自测试题，供学生平时练习使用，学生可限时逐套完成，以便不断提高应试能力与英语运用水平。专项练习与仿真自测试题之后均附有答案与题解，帮助学生进行自我检测，自我解决疑惑，查找学习中的漏洞与不足。',
+'大学英语教研中心',28,9787561145067,'大连理工大学出版社','2008-11-1',0.8)
+GO 
+INSERT BOOKS
+VALUES('B002','高等数学','《高等数学》主要包括适合理工科专科学生和本科少学时学生学习的内容和习题，并对一些习题给出提示和求解思路。编者针对教学的特点，在内容的论述上力求详细、严谨，清楚易懂，还配置了足够数量的习题，供学生课内外练习，并在书末附有习题答案，便于教学。内容包括函数与极限、导数与微分、微分中值定理与导数的应用、不定积分、定积分、定积分的应用、微分方程。《高等数学》除可作为高等工科院校本科少学时学生的教材外，还可以供大专性质的专科班、进修班，以及工程技术人员使用。',
+'闫德明',33,9787302271222,'清华大学出版社','2012-1-1',0.85)
+GO
+INSERT BOOKS
+VALUES('B003','数据结构','《数据结构》系统地介绍了各种类型的数据结构和查找、排序的各种方法。对每一种数据结构，除了详细阐述其基本概念和具体实现外，并尽可能对每种操作给出类PASCAL的算法，对查找和排序的各种算法，还着重在时间上作出定量或定性的分析比较。最后一章讨论文件的各种组织方法。',
+'严蔚敏，吴伟民',29,9787302009849,'清华大学出版社','2012-12-1',0.9)
+GO
+INSERT BOOKS
+VALUES('B004','数据库原理与应用教程——SQL Server 2008','本书全面讲述了数据库的基本原理和soL Server2008的应用，全书以理论够用、实用，实践为第一的原则，使读者能够快速、轻松地掌握soLServer数据库技术与应用。第1～第3章讲述数据库的基本理论知识，其内容包括数据库系统概述、关系数据库和数据库设计；第4～第13章讲述数据库管理系统soLServer 2008的应用，其内容包括soL Server2008数据库基础、数据库的概念和操作、表的基本操作、数据库查询.T-SQL编程、视图和索引、存储过程和触发器、事务与并发控制、数据库的安全管理、数据库的备份与还原；第14章利用一个实例介绍了基于C#.NET的SQLServer数据库系统开发过程。本书理论和实践相结合，既阐述了数据库的基本理论又结合了soL Server2008数据库管理系统的应用。内容翔实，实例丰富，图文并茂，体系完整，通俗易懂，有助于读者理解数据库的基本概念、掌握要点和攻克难点；为便于学习，每章还配有丰富的习题。',
+'尹志宇，郭睛',39.5,9787302319597,'清华大学出版社','2013-8-1',0.88)
+GO
+CREATE TABLE Lending
+(Lid INT IDENTITY(1,1) PRIMARY KEY,
+ Bid CHAR(4) REFERENCES BOOKS,
+ Sid CHAR(6) REFERENCES STUDENT, 
+ Returned INT NOT NULL DEFAULT 2)
+GO
+INSERT Lending
+VALUES('B001','100103',1)
+GO
+INSERT Lending
+VALUES('B002','100103',0)
+GO
+INSERT Lending
+VALUES('B004','100103',0)
+GO
+INSERT Lending
+VALUES('B002','100102',0)
+GO
+INSERT Lending
+VALUES('B003','100102',1)
+GO
+INSERT Lending
+VALUES('B003','101229',1)
+GO
+INSERT INTO Lending(Bid,Sid)
+SELECT Bid,Sid
+FROM Books CROSS JOIN Student
+WHERE Sid LIKE '_____[1,5,9]'
+GO
+INSERT INTO Lending(Bid,Sid)
+SELECT Bid,Sid
+FROM Books CROSS JOIN Student
+WHERE Sid LIKE '____[0,2][5,9]'
+GO
+INSERT INTO Lending(Bid,Sid)
+SELECT Bid,Sid
+FROM Books CROSS JOIN Student
+WHERE Sid LIKE '____[2][5,9]' AND Bid LIKE 'B00[2,3]'
+GO
+INSERT INTO Lending(Bid,Sid)
+SELECT Bid,Sid
+FROM Books CROSS JOIN Student
+WHERE Sid LIKE '___[2-4][0][5]' AND Bid LIKE 'B002'
+GO
+INSERT INTO Lending(Bid,Sid)
+SELECT Bid,Sid
+FROM Books CROSS JOIN Student
+WHERE Sid LIKE '____[2][9]' AND Bid LIKE 'B002'
+GO
+INSERT INTO Lending(Bid,Sid)
+SELECT Bid,Sid
+FROM Books CROSS JOIN Student
+WHERE Sid LIKE '__[1]_[2][9]' AND Bid LIKE 'B002'
+GO
+CREATE DATABASE PROJECT
+GO
+USE PROJECT
+GO
+CREATE TABLE Department
+(Did CHAR(4) PRIMARY KEY,
+ Dname VARCHAR(20),
+ Telephone VARCHAR(11))
+GO
+INSERT INTO Department
+VALUES('D001','人事部','07516501111')
+GO
+INSERT INTO Department
+VALUES('D002','财务部','07516502222')
+GO
+INSERT INTO Department
+VALUES('D003','营销部','07516503333')
+GO
+CREATE TABLE Employee
+(Eid CHAR(4) PRIMARY KEY,
+ Ename VARCHAR(20),
+ WorkDate DATETIME,
+ Esex BIT,
+ BasePay MONEY,
+ Bonus MONEY,
+ Insurance MONEY,
+ Did CHAR(4) FOREIGN KEY REFERENCES Department)
+GO
+INSERT INTO Employee
+VALUES('1001','杨勇辉','1990-7-1',1,3200,1700,780,'D001')
+GO
+INSERT INTO Employee
+VALUES('1002','陈燕玲','1999-6-1',0,2800,1420,500,'D002')
+GO
+INSERT INTO Employee
+VALUES('1003','周胜强','2005-9-10',1,3500,300,610,'D002')
+GO
+INSERT INTO Employee
+VALUES('1004','李梅欣','2007-3-9',1,2700,1320,440,'D002')
+GO
+INSERT INTO Employee
+VALUES('1005','罗英诚','1985-7-20',1,12700,2320,940,'D003')
+GO
+INSERT INTO Employee
+VALUES('1006','胡丽美','1989-5-19',1,9700,1820,840,'D003')
+GO
+INSERT INTO Employee
+VALUES('1007','赵大海','1981-5-19',1,7700,920,740,'D001')
+GO
+INSERT INTO Employee
+ VALUES('1008','谢国和','1985-7-7',1,9800,1910,860,'D001'),
+ ('1009','王兵','1990-3-8',1,6500,827,510,'D001'),
+ ('1010','刘进强','1983-3-9',1,12000,2000,1000,'D002'),
+ ('1011','陈小波','1998-6-10',1,5900,400,500,'D002'),
+ ('1012','邱雄龙','1987-3-11',1,7600,1500,700,'D003'),
+ ('1013','王琨','2000-5-12',1,4600,300,400,'D003'),
+ ('1014','李丽芳','2010-5-12',0,3600,240,300,'D003')
+GO
+CREATE TABLE Project
+(Pid CHAR(4) PRIMARY KEY,
+ Pname VARCHAR(20))
+GO
+INSERT INTO Project
+VALUES('A001','1#')
+GO
+INSERT INTO Project
+VALUES('A002','2#')
+GO
+INSERT INTO Project
+VALUES('A003','3#')
+GO
+INSERT INTO Project
+VALUES('A004','4#')
+GO
+INSERT INTO Project
+VALUES('A005','5#')
+GO
+CREATE TABLE EP
+(Eid CHAR(4) REFERENCES Employee,
+ Pid CHAR(4) REFERENCES Project,
+ Wages MONEY,
+ PRIMARY KEY(Eid,Pid))
+GO
+INSERT INTO EP
+VALUES('1001','A001',10340.4)
+INSERT INTO EP
+VALUES('1001','A002',9340.6000)
+INSERT INTO EP
+VALUES('1001','A003',8940.4000)
+INSERT INTO EP
+VALUES('1001','A004',7040.4000)
+INSERT INTO EP
+VALUES('1002','A001',5340.4000)
+INSERT INTO EP
+VALUES('1002','A003',4340.4000)
+INSERT INTO EP
+VALUES('1002','A005',6340.4000)
+INSERT INTO EP
+VALUES('1003','A002',8340.4000)
+INSERT INTO EP
+VALUES('1003','A004',5280.5000)
+GO
+CREATE TABLE Social
+(MaxSocial money,
+MinSocial money,
+ Scale decimal(10,2))
+GO
+INSERT Social
+VALUES(4500,900,0.1)
+GO
+CREATE TABLE Sale
+(
+ID INT IDENTITY PRIMARY KEY,
+Pid CHAR(4) FOREIGN KEY REFERENCES Project,
+SYear INT,
+SMonth INT,
+SaleAmount MONEY
+)
+GO
+DECLARE @SYear INT=2015,@SMonth INT= 1
+WHILE(@SYear<=2017 )
+BEGIN
+   INSERT INTO Sale(Pid,SYear,SMonth)
+   SELECT Pid,@SYear,@SMonth
+   FROM PROJECT
+   SET @SMonth+=1
+   IF @SMonth=13
+   BEGIN
+     SET @SMonth=1   
+     SET @SYear+=1     
+   END
+END
+UPDATE Sale SET SaleAmount= CAST(ABS(CHECKSUM(NEWID()))/100000.0 AS decimal(10,2))
+
+
+2.
+GO
+CREATE TABLE Books
+(Bid CHAR(4) PRIMARY KEY,
+ Bname VARCHAR(50),
+ Content Text,
+ Author VARCHAR(50),
+ Price Money,
+ ISBN CHAR(13),
+ Publisher VARCHAR(50),
+ PublisherDate DateTime,
+ Discount DECIMAL(3,2)
+ )
+GO 
+INSERT BOOKS
+VALUES('B002','高等数学','《高等数学》主要包括适合理工科专科学生和本科少学时学生学习的内容和习题，并对一些习题给出提示和求解思路。编者针对教学的特点，在内容的论述上力求详细、严谨，清楚易懂，还配置了足够数量的习题，供学生课内外练习，并在书末附有习题答案，便于教学。内容包括函数与极限、导数与微分、微分中值定理与导数的应用、不定积分、定积分、定积分的应用、微分方程。《高等数学》除可作为高等工科院校本科少学时学生的教材外，还可以供大专性质的专科班、进修班，以及工程技术人员使用。',
+'张建林',35.6,9787302271222,'清华大学出版社','2012-1-1',0.85)
+
+
+3.
+GO
+CREATE TABLE Books
+(Bid CHAR(4) PRIMARY KEY,
+ Bname VARCHAR(50),
+ Content Text,
+ Author VARCHAR(50),
+ Price Money,
+ ISBN CHAR(13),
+ Publisher VARCHAR(50),
+ PublisherDate DateTime,
+ Discount DECIMAL(3,2)
+ )
+GO
+INSERT Books
+VALUES('B001','大学英语','本书由两部分构成：第一部分为专项练习，第二部分为仿真自测。第一部分介绍了各类题型的应试技巧，并提供了相应的专项练习，学生可以根据自身的学习需要，分项进行强化练习，固本培元。第二部分提供了20套完整的仿真自测试题，供学生平时练习使用，学生可限时逐套完成，以便不断提高应试能力与英语运用水平。专项练习与仿真自测试题之后均附有答案与题解，帮助学生进行自我检测，自我解决疑惑，查找学习中的漏洞与不足。',
+'大学英语教研中心',28,9787561145067,'大连理工大学出版社','2008-11-1',0.75)
+GO 
+INSERT BOOKS
+VALUES('B002','高等数学','《高等数学》主要包括适合理工科专科学生和本科少学时学生学习的内容和习题，并对一些习题给出提示和求解思路。编者针对教学的特点，在内容的论述上力求详细、严谨，清楚易懂，还配置了足够数量的习题，供学生课内外练习，并在书末附有习题答案，便于教学。内容包括函数与极限、导数与微分、微分中值定理与导数的应用、不定积分、定积分、定积分的应用、微分方程。《高等数学》除可作为高等工科院校本科少学时学生的教材外，还可以供大专性质的专科班、进修班，以及工程技术人员使用。',
+'张建林',35.6,9787302271222,'清华大学出版社','2012-1-1',0.8)
+GO
+INSERT BOOKS
+VALUES('B003','数据结构','《数据结构》系统地介绍了各种类型的数据结构和查找、排序的各种方法。对每一种数据结构，除了详细阐述其基本概念和具体实现外，并尽可能对每种操作给出类PASCAL的算法，对查找和排序的各种算法，还着重在时间上作出定量或定性的分析比较。最后一章讨论文件的各种组织方法。',
+'严蔚敏，吴伟民',29,9787302009849,'清华大学出版社','2012-12-1',0.85)
+GO
+INSERT BOOKS
+VALUES('B004','数据库原理与应用教程——SQL Server 2008','本书全面讲述了数据库的基本原理和soL Server2008的应用，全书以理论够用、实用，实践为第一的原则，使读者能够快速、轻松地掌握soLServer数据库技术与应用。第1～第3章讲述数据库的基本理论知识，其内容包括数据库系统概述、关系数据库和数据库设计；第4～第13章讲述数据库管理系统soLServer 2008的应用，其内容包括soL Server2008数据库基础、数据库的概念和操作、表的基本操作、数据库查询.T-SQL编程、视图和索引、存储过程和触发器、事务与并发控制、数据库的安全管理、数据库的备份与还原；第14章利用一个实例介绍了基于C#.NET的SQLServer数据库系统开发过程。本书理论和实践相结合，既阐述了数据库的基本理论又结合了soL Server2008数据库管理系统的应用。内容翔实，实例丰富，图文并茂，体系完整，通俗易懂，有助于读者理解数据库的基本概念、掌握要点和攻克难点；为便于学习，每章还配有丰富的习题。',
+'尹志宇，郭睛',39.5,9787302319597,'清华大学出版社','2013-8-1',0.83)
+
+
+
+4.
+SELECT TOP (1000) [Bid]
+      ,[Bname]
+      ,[Content]
+      ,[Author]
+      ,[Price]
+      ,[ISBN]
+      ,[Publisher]
+      ,[PublisherDate]
+      ,[Discount]
+  FROM [EDUC].[dbo].[Books]
+
+
+5.
+SELECT TOP (10) [Sid]
+      ,[Sname]
+      ,[Sex]
+      ,[Birth]
+      ,[DID]
+  FROM [EDUC].[dbo].[Student]
